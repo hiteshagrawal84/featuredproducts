@@ -1,0 +1,21 @@
+<?php
+namespace Namespace\FeaturedProducts\Block\Product;
+
+use Magento\Catalog\Block\Product\ListProduct;
+use Magento\Catalog\Model\ResourceModel\Collection\AbstractCollection;
+
+/**
+ * For Custom List Collection
+ */
+class CustomList extends ListProduct
+{
+    public function getLoadedProductCollection()
+    {
+        return $this->_productCollection;
+    }
+
+    public function setProductCollection(AbstractCollection $collection)
+    {
+        $this->_productCollection = $collection;
+    }
+}// end class

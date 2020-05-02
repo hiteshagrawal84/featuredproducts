@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Layer\Resolver">
+        <arguments>
+            <argument name="layersPool" xsi:type="array">
+                <item name="category" xsi:type="string">Magento\Catalog\Model\Layer\Category</item>
+                <item name="search" xsi:type="string">Magento\Catalog\Model\Layer\Search</item>
+                <item name="customlayer" xsi:type="string">NameSpace\FeaturedProducts\Model\Layer</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="featuredProductFilterList" type="NameSpace\FeaturedProducts\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filterableAttributes" xsi:type="object">NameSpace\FeaturedProducts\Model\Layer\FilterableAttributeList</argument>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">NameSpace\FeaturedProducts\Model\Layer\Filter\Attribute</item>
+                <item name="category" xsi:type="string">NameSpace\FeaturedProducts\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="NameSpace\FeaturedProducts\Block\Navigation\Featuredproductnavigation" type="Magento\LayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">featuredProductFilterList</argument>
+        </arguments>
+    </virtualType>
+</config>
